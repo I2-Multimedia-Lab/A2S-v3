@@ -173,26 +173,15 @@ def main():
                 lamda = [0.7,0.2,0.1]
                 for gt_path, image, pred, gt, flip in zip(gt_names, images, torch.sigmoid(Y['final'].detach()), gts, flips):
                     pred = F.interpolate(pred.unsqueeze(0), size=gt.size()[1:], mode='bilinear', align_corners=True)[0]
-                    #print(pred.shape,image.shape)
                     ref = par(image.unsqueeze(0),pred.unsqueeze(0)).squeeze(0)
                     ref = ref/ref.max()
-                    #print(ref.shape,pred.shape,gt.shape)
                     if flip:
                         pred = pred.flip(2)
                         ref = ref.flip(2)
                         gt = gt.flip(2)
                     new_gt = (pred * lamda[0]).cpu().numpy().transpose(1, 2, 0)+(gt * lamda[1]).cpu().numpy().transpose(1, 2, 0)+(ref*lamda[2]).cpu().numpy().transpose(1, 2, 0)
                     new_gt = ((new_gt/new_gt.max())).astype(np.float32)
-                    #print(new_gt.shape)
                     cv2.imwrite(gt_path, new_gt * 255)
-                    #print(gt_path)
-                    #print(gt_path.split('/'))
-                    #print('./pseudo/spr_/ori/'+gt_path.split('/')[-1])
-                    if epoch == 10:
-                        cv2.imwrite('./pseudo/spr_/ori/'+gt_path.split('/')[-1], gt.cpu().numpy().transpose(1, 2, 0)*255)
-                        cv2.imwrite('./pseudo/spr_/par/'+gt_path.split('/')[-1], ref.cpu().numpy().transpose(1, 2, 0)*255)
-                        cv2.imwrite('./pseudo/spr_/sal/'+gt_path.split('/')[-1], pred.cpu().numpy().transpose(1, 2, 0)*255)
-                        cv2.imwrite('./pseudo/spr_/ref/'+gt_path.split('/')[-1], new_gt * 255)
                 
         sche.step()
         bar.finish()
