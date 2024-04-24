@@ -35,9 +35,9 @@ def base_config(cfg_dict):
     parser.add_argument('--only_rgb', action='store_true')
     
     # Dataset setting
-    parser.add_argument('--trset', default='cdot', help='Set the traing set')
+    parser.add_argument('--trset', default='cdot', help='Set the training set')
     parser.add_argument('--vals', default='ce', help='Set the testing sets') # cr, ce, dr, de, or, oe # SOD,PASCAL-S,ECSSD,DUTS-TE,HKU-IS,DUT-OMRON
-    parser.add_argument('--data_path', default='/mnt/ssd/yy/datasets', help='The name of network')
+    parser.add_argument('--data_path', default='./datasets', help='Data path')
     parser.add_argument('--reduce_data', action='store_true', help='Reduce data')
     parser.add_argument('--reduce_rate', default=0.5, type=float, help='Reduce rate')
     #parser.add_argument('--modality', default='c', help='The name of network')
