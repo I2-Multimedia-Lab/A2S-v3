@@ -7,16 +7,17 @@ Source code of '[Unified Unsupervised Salient Object Detection via Knowledge Tra
 This study builds upon [moothes](https://github.com/moothes)'s earlier research, specifically [A2S-v2](https://github.com/moothes/A2S-v2). Consequently, most of the code implementation remains consistent or bears similarity to theirs. For further insight into the A2S series of studies, readers are encouraged to consult the code repository of the preceding work [A2S-v2](https://github.com/moothes/A2S-v2) and [A2S](https://github.com/moothes/A2S-USOD).
 ## News
 - [2024.4.24] The manuscript is now available at Arxiv [2404.14759](https://arxiv.org/abs/2404.14759).
-- [2024.4.24] The supplementary material is now available at [Github](https://github.com/I2-Multimedia-Lab/A2S-v3/figures/A2S-v3_supp.pdf).
+- [2024.4.24] The supplementary material is now available at [Github](https://github.com/I2-Multimedia-Lab/A2S-v3/blob/main/figures/A2S-v3_supp.pdf).
 - [2024.4.17] Our paper has been accepted by [IJCAI 2024](https://ijcai24.org/).
 
 ## Advancements
-### More stable distilling of saliency cues
+### 🚀 More stable distilling of saliency cues
 We introduce the concept of curriculum learning, wherein progressively hard samples are incorporated into the training process. This approach aims to stabilize the training process and mitigate the risk of pattern collapse. 
-### Improved pseudo-label refinement
+### 💡 Improved pseudo-label refinement
 We integrated the Online Label Refinement (OLR) technique proposed in [A2S](https://github.com/moothes/A2S-USOD) with the real-time pixel refiner presented in [afa](https://github.com/rulixiang/afa), aiming to introduce a more robust strategy for updating pseudo labels. Our results showcase enhanced performance in self-supervised learning.
-### Adapter-tuning driven knowledge transfer
+### 🔥 Adapter-tuning driven knowledge transfer
 We employ the Adapter-tuning methodology to transfer knowledge from Nature Still Image (NSI) SOD tasks to non-NSI SOD tasks (e.g., video SOD, remote sensing image SOD), yielding commendable transfer performance.
+
 ## Environment
 Python 3.9.13 and Pytorch 1.11.0. Details can be found in `requirements.txt`. If your environment can run [A2S-v2](https://github.com/moothes/A2S-v2), then it should also be able to run our code.
 ## Data Preparation
@@ -31,7 +32,6 @@ The datasets we used for five different SOD tasks are as follows:
 
 Detailed instruction on dataset deployment and customization can be found in `data.md`.
 ## Training & Testing
-
 
 ### Stage 1
 ```
@@ -54,6 +54,8 @@ python3 test.py a2s --gpus=[gpu_num] --weight=[path_to_weight] --vals=[cr/dr/or/
 python3 test.py a2s --gpus=[gpu_num] --weight=[path_to_weight] --vals=[ce/de/oe/te] [--save]
 ```
 
+When finetuning on video/RSI SOD tasks, the weights trained on natural still image data need to be used, which can be download at [baidu link](). 
+
 After the training process in stage 1, we will generate pseudo labels for all training sets and save them to a new ```pseudo``` folder.
 
 ### Stage 2
@@ -73,8 +75,24 @@ python3 train.py midnet --gpus=[gpu_num] --stage=2 --trset=[o/r] --vals=[oe/re]
 python3 test.py midnet --gpus=[gpu_num] --weight=[path_to_weight] --vals=[ce/de/oe/te/re] [--save]
 ```
 
+## Resource
+Pre-trained [MoCo-v2 weight](https://github.com/facebookresearch/moco)
+### Stage 1 (A2S)
+Pre-trained on NSI data (include RGB, RGB-D, RGB-T): [baidu link](https://pan.baidu.com/s/1s_2VUuJQOsKGR17yyOu_Rw)(7t1n)
+
+Tuned on video data: [baidu link](https://pan.baidu.com/s/1okaxHJy6iG_EdL03BFLEwQ)(hzki) and remote sensing image data: [baidu link](https://pan.baidu.com/s/18Wg-z3iUthU9WrXDtiWjPw)(lesw)
+
+Pre-calculated pseudo-labels: [baidu link](https://pan.baidu.com/s/1_Vf1PbOgsUm7m059QXyoZA)(ukyd)
+
+### Stage 2 (MIDD)
+Pre-trained on NSI data (include RGB, RGB-D, RGB-T): [baidu link](https://pan.baidu.com/s/1NBUHkIpnwDWO3rzFMbC4Gg)(dgqv)
+
+Pre-trained on video data: [baidu link](https://pan.baidu.com/s/1gY1nuMtqDA5t5gmvlR2F3Q)(ky1q) and remote sensing image data: [baidu link](https://pan.baidu.com/s/1wnukpQo72F8rwcCaNDK_MA)(70oe)
+
+Pre-calculated saliency maps: [NSI](https://pan.baidu.com/s/162_NUfNt5WnnJlKbWzDEUQ)(nlet), [video](https://pan.baidu.com/s/1K8zNA0BtzG7jBu8NR4LcPg)(vz36), [RSI](https://pan.baidu.com/s/1IliYR8TX-D685LW_lMIgyw)(8gvj)
+
 ## Acknowledgement
-Our idea is inspired by [A2S-v2](https://github.com/moothes/A2S-v2) and [A2S](https://github.com/moothes/A2S-USOD), thanks for their excellent works. 
+🤝Our idea is inspired by [A2S-v2](https://github.com/moothes/A2S-v2) and [A2S](https://github.com/moothes/A2S-USOD), thanks for their excellent works. 
 
 ## Citation
 If you think our work is helpful, please consider cite:
