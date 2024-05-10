@@ -91,6 +91,23 @@ Pre-trained on video data: [baidu link](https://pan.baidu.com/s/1gY1nuMtqDA5t5gm
 
 Pre-calculated saliency maps: [NSI](https://pan.baidu.com/s/162_NUfNt5WnnJlKbWzDEUQ)(nlet), [video](https://pan.baidu.com/s/1K8zNA0BtzG7jBu8NR4LcPg)(vz36), [RSI](https://pan.baidu.com/s/1IliYR8TX-D685LW_lMIgyw)(8gvj)
 
+## Results
+<div align=center>
+<img src="./figures/RGB.png">
+</div>
+<div align=center>
+<img src="./figures/RGB-D.png">
+</div>
+<div align=center>
+<img src="./figures/RGB-T.png">
+</div>
+<div align=center>
+<img src="./figures/video.png">
+</div>
+<div align=center>
+<img src="./figures/RSI.png">
+</div>
+
 ## Acknowledgement
 🤝Our idea is inspired by [A2S-v2](https://github.com/moothes/A2S-v2) and [A2S](https://github.com/moothes/A2S-USOD), thanks for their excellent works. 
 
