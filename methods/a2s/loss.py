@@ -81,6 +81,6 @@ def Loss(pre1, img1, pre2, img2, epoch, ws, config, name):
         ac_loss = 0
     
     p2 = F.interpolate(p2, size=p1.size()[2:], mode='bilinear', align_corners=True)
-    mse_loss = 0#torch.mean(torch.pow(p1 - p2, 2))
+    mse_loss = torch.mean(torch.pow(p1 - p2, 2))
     
     return adb_loss * ws[0], ac_loss * ws[1], mse_loss * ws[2]
