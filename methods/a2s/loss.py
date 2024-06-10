@@ -76,7 +76,7 @@ def Loss(pre1, img1, pre2, img2, epoch, ws, config, name):
     adb_loss = CSDloss(p1, pre1['feat'][0], config['pcl'], epoch, config, name) + CSDloss(p2, pre2['feat'][0], config['pcl'], epoch, config, name)
     
     if ws[1] > 0:
-        ac_loss = 0#BTMLoss(p1, img1, 5, config) + BTMLoss(p2, img2, 5, config)
+        ac_loss = BTMLoss(p1, img1, 5, config) + BTMLoss(p2, img2, 5, config)
     else:
         ac_loss = 0
     
