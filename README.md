@@ -6,6 +6,8 @@ Source code of '[Unified Unsupervised Salient Object Detection via Knowledge Tra
 
 This study builds upon [moothes](https://github.com/moothes)'s earlier research, specifically [A2S-v2](https://github.com/moothes/A2S-v2). Consequently, most of the code implementation remains consistent or bears similarity to theirs. For further insight into the A2S series of studies, readers are encouraged to consult the code repository of the preceding work [A2S-v2](https://github.com/moothes/A2S-v2) and [A2S](https://github.com/moothes/A2S-USOD).
 ## News
+- [2024.8.7] We conducted a presentation at session CV: Recognition of the main conference and the relevant materials have been uploaded. 
+- [2024.5.27] Our method's prediction results on [VDT](https://github.com/VDT-2048/VDT-Dataset) dataset can be found at [baidu link](https://pan.baidu.com/s/1bTGEWdmAPfwWnCLTJOxW5A)(cdck). Our method can easily perform inference on other tasks or datasets, with slight modifications in dataset settings. 
 - [2024.4.24] The manuscript is now available at Arxiv [2404.14759](https://arxiv.org/abs/2404.14759).
 - [2024.4.24] The supplementary material is now available at [Github](https://github.com/I2-Multimedia-Lab/A2S-v3/blob/main/figures/A2S-v3_supp.pdf).
 - [2024.4.17] Our paper has been accepted by [IJCAI 2024](https://ijcai24.org/).
@@ -54,7 +56,7 @@ python3 test.py a2s --gpus=[gpu_num] --weight=[path_to_weight] --vals=[cr/dr/or/
 python3 test.py a2s --gpus=[gpu_num] --weight=[path_to_weight] --vals=[ce/de/oe/te] [--save]
 ```
 
-When finetuning on video/RSI SOD tasks, the weights trained on natural still image data need to be used, which can be download at [baidu link](). 
+When finetuning on video/RSI SOD tasks, the weights trained on natural still image data need to be used, which can be download at [baidu link](https://pan.baidu.com/s/1s_2VUuJQOsKGR17yyOu_Rw?pwd=7t1n)(7t1n). 
 
 After the training process in stage 1, we will generate pseudo labels for all training sets and save them to a new ```pseudo``` folder.
 
@@ -114,13 +116,14 @@ Pre-calculated saliency maps: [NSI](https://pan.baidu.com/s/162_NUfNt5WnnJlKbWzD
 ## Citation
 If you think our work is helpful, please consider cite:
 ```
-@misc{yuan2024unified,
-      title={Unified Unsupervised Salient Object Detection via Knowledge Transfer}, 
-      author={Yao Yuan and Wutao Liu and Pan Gao and Qun Dai and Jie Qin},
-      year={2024},
-      eprint={2404.14759},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@inproceedings{yuan2024unified,
+  title     = {Unified Unsupervised Salient Object Detection via Knowledge Transfer},
+  author    = {Yuan, Yao and Liu, Wutao and Gao, Pan and Dai, Qun and Qin, Jie},
+  booktitle = {Proceedings of the Thirty-Third International Joint Conference on
+               Artificial Intelligence, {IJCAI-24}},
+  pages     = {1616--1624},
+  year      = {2024},
+  doi       = {10.24963/ijcai.2024/179},
 }
 ```
 Please also consider citing pioneering work A2S-v2 and A2S:
